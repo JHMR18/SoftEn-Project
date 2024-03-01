@@ -88,7 +88,7 @@ if (!$result) {
             <li>
                 <a href="#">
                     <i class='bx bxs-notepad' ></i>
-                    <span class="text">Courses</span>
+                    <span class="text">Courses(Not available)</span>
                 </a>
             </li>
         </ul>
