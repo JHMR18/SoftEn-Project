@@ -77,13 +77,13 @@
             display: none; /* Hide the audio element */
         }
         .tittle h2{
-            position: relative;
-            left: 31%;
+
+            left: 26%;
             font-family: var(--poppins);
             position: absolute;
             font-weight: bold;
-            top: 3%;
-            font-size: 30px;
+            top: 8%;
+            font-size: 50px;
             text-align: center;
             color: #fdc214; 
         
@@ -167,9 +167,9 @@
     <div class="files">
         <img src="3D/files.png" alt="" width="200" height="200">
     </div>
-    <div class="tittle"><h2>Attendance Management System</h2></div>
+    <div class="tittle"><h2>Attendance Monitoring System</h2></div>
     <div class="row">
-        <div class="video">
+        <div class="video"> 
             <video id="preview" width="100%"></video>
         </div>
         <div class="col">
@@ -215,7 +215,7 @@ scanner.addListener('scan', function (c) {
                 // Display a popup or a message for existing attendance
                 playSound(audioExist);
                 confirmationMessage.innerHTML = '<p style="color: orange;">Attendance already taken!</p>';
-            } else {
+            } else if (response.trim() === 'error') {
                 playSound(audioFail);
                 confirmationMessage.innerHTML = '<p style="color: red;">Failed to take attendance.</p>';
             }

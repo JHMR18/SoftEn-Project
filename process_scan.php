@@ -17,27 +17,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function insertScanRecord($studentID, $attendanceStatus) {
     $conn = connectToDatabase();
 
+    // Check if the student ID exists in the database
+    $stmtCheckID = $conn->prepare("SELECT COUNT(*) FROM Students WHERE studentID = ?");
+    $stmtCheckID->bind_param("s", $studentID);
+    $stmtCheckID->execute();
+    $stmtCheckID->bind_result($studentCount);
+    $stmtCheckID->fetch();
+    $stmtCheckID->close();
+
+    if ($studentCount == 0) {
+        echo "error";
+        mysqli_close($conn);
+        return;
+    }
+
     // Check if attendance already exists for today
-    $stmtCheck = $conn->prepare("SELECT COUNT(*) FROM Scans WHERE studentID = ? AND DATE(scanDate) = CURDATE()");
-      
-    // Check if the prepare statement is successful
-    if (!$stmtCheck) {
-        echo "error: " . $conn->error;
-        return;
-    }
-
-    $stmtCheck->bind_param("s", $studentID);
-    $stmtCheck->execute();
-    
-    // Check if the execute statement is successful
-    if (!$stmtCheck->execute()) {
-        echo "error: " . $stmtCheck->error;
-        return;
-    }
-
-    $stmtCheck->bind_result($attendanceCount);
-    $stmtCheck->fetch();
-    $stmtCheck->close();
+    $stmtCheckAttendance = $conn->prepare("SELECT COUNT(*) FROM Scans WHERE studentID = ? AND DATE(scanDate) = CURDATE()");
+    $stmtCheckAttendance->bind_param("s", $studentID);
+    $stmtCheckAttendance->execute();
+    $stmtCheckAttendance->bind_result($attendanceCount);
+    $stmtCheckAttendance->fetch();
+    $stmtCheckAttendance->close();
 
     if ($attendanceCount > 0) {
         echo "attendance_exists";
