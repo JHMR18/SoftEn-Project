@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare .com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Login</title>
+    <title>Admin Login</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
       *{
@@ -61,7 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       body{
         min-height: 100vh;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
         background: white;
@@ -162,13 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 .wrapper a:hover {
     color: black;
 }
-.title{
-  font-weight: 600;
-  font-size: 3rem;
-  letter-spacing: 1.3px;
-  color: #555;
-  text-align: center;
-}
+
 @media(max-width: 380px) {
     .wrapper {
         margin: 30px 20px;
@@ -181,34 +174,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
   <div class="container">
-  <!-- <div class="title">
-      Attendance Monitoring System
-  </div> -->
   <div class="wrapper">
         <div class="logo">
             <img src="3D/logo.png" alt="">
         </div>
         <div class="text-center mt-4 name">
-            Teacher Login
+            Admin Login
         </div>
-        <form class="p-3 mt-3" id="teacherLoginForm"  method="post">
+        <form class="p-3 mt-3" id="adminLoginForm"  method="post">
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-user"></span>
-                <input name="Tusername" type="text" placeholder="Enter username" required>
+                <input name="Ausername" type="text" placeholder="Enter username" required>
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
-                <input name="Tpassword" type="password" placeholder="Enter your password" required>
+                <input name="Apassword" type="password" placeholder="Enter your password" required>
             </div>
             <?php
           if ($authenticationError) {
               echo '<div class="error-message">Invalid username or password</div>';
           }
           ?>
-            <button class="btn mt-3" name="Tlogin" type="submit" value="Login">Login</button>
+            <button class="btn mt-3" name="Alogin" type="submit" value="Login">Login</button>
         </form>
         <div class="text-center fs-6">
-            <p>Login as <a href="admin_login.php">Admin</a></p> 
+            <p>Login as <a href="index.php">Teacher</a></p> 
         </div>
     </div>
   </div>
