@@ -173,7 +173,7 @@
         </div>
         <div class="col">
             <label>STUDENT NAME:  </label>
-            <input type="text" name="text" id="text" readonly="" placeholder="Please Scan your ID">
+            <input type="text" name="text" id="text" readonly="" placeholder="Please Scan your ID" style="width: 300px;" >
             <div id="confirmationMessage"></div>
         </div>
     </div>

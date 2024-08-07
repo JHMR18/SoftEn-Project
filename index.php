@@ -175,6 +175,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         padding: 40px 15px 15px 15px;
     }
 }
+.error-message{
+    color: red;
+}
     </style>
    </head>
    
